@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
 import { actions } from '../../constants/Actions';
+import { sprites_sizes } from '../../constants/SpritesSizes';
+import { Sprite, Dialog } from '../../constants/Styles';
 import styles from './styles.module.scss';
 
 export default function Animation() {
@@ -33,22 +34,25 @@ export default function Animation() {
     <>
       <div className={styles.animation_container}>
 
-        <motion.div 
+        <Dialog 
           className={styles.dialog}
           onClick={handleDialogClick}
           style={{ display: showDialog ? 'flex' : 'none' }}
-          animate={{ x: crrAction.x - 28, y: crrAction.y }} // menos 28 por que o tamanho do sprite é 200 e o dialog tem tamanho 256 --> 256 - 200 = 56 / 2 = 28
+          animate={{
+            x: crrAction.x - ((sprites_sizes.dialog.int_width - sprites_sizes.character.int_width) / 2),
+            y: crrAction.y
+          }}
           transition={{ type: 'tween', duration: crrAction.duration, delay: crrAction.delay }}
         >
           <div className={styles.dialog_text}>
             { crrAction.text }
           </div>
-        </motion.div>
+        </Dialog>
 
-        <motion.img
+        <Sprite
           className={styles.sprite} alt='sprite'
           src={crrSprite}
-          style={{ scaleX: crrAction.x > actions[crrAction.id - 1]?.x ? 1 : -1 }}
+          style={{ scaleX: crrAction.scaleX }}
           animate={{ x: crrAction.x, y: crrAction.y }}
           transition={{ type: 'tween', duration: crrAction.duration, delay: crrAction.delay }}
           onAnimationComplete={() => {
