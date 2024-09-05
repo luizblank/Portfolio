@@ -8,7 +8,6 @@ export const Sprite = styled(motion.img)`
 `
 
 export const Dialog = styled(motion.div)`
-    position: relative;
     background-image: url('./../../../public/dialog.png');
     background-repeat: no-repeat;
     background-origin: content-box;
@@ -18,4 +17,13 @@ export const Dialog = styled(motion.div)`
     display: flex;
     justify-content: center;
     align-items: center;
+`
+
+export const Ground = styled.div`
+    background-color: white;
+    border-top: 8px solid black;
+    width: 100%;
+    height: 100px;
+    padding: 0;
+    margin: 0;
 `
