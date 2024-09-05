@@ -3,7 +3,9 @@ import styles from './styles.module.scss';
 export default function BackgroundFirst() {
     return(
         <>
-            <div style={{ backgroundColor: 'red'}}>lol</div>
+            <div className={styles.page}>
+                lol
+            </div>
         </>
     )
 }

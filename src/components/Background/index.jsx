@@ -1,7 +1,12 @@
+import { motion } from 'framer-motion';
+import styles from './styles.module.scss';
+
 export default function Background({ children }) {
     return (
         <>
-            { children }
+            <motion.div className={styles.background}>
+                { children }
+            </motion.div>
         </>
     )
 }

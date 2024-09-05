@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
 import { actions } from '../../constants/Actions';
 import { sprites_sizes } from '../../constants/SpritesSizes';
 import { Sprite, Dialog, Ground } from '../../constants/Styles';
@@ -45,39 +44,13 @@ export default function Animation() {
 		);
 	};
 
-	const variants = {
-		enter: (direction) => ({
-			x: direction > 0 ? 300 : -300,
-			opacity: 0,
-		}),
-		center: {
-			x: 0,
-			opacity: 1,
-		},
-		exit: (direction) => ({
-			x: direction < 0 ? 300 : -300,
-			opacity: 0,
-		}),
-	};
-
 	return (
 		<>
 			<div className={styles.container}>
-				<AnimatePresence className={styles.background}>
-					<motion.Background
-						key={backgroundIndex}
-						children={backgrounds[backgroundIndex]}
-						custom={1}
-						variants={variants}
-						initial="enter"
-						animate="center"
-						exit="exit"
-						transition={{
-							x: { type: "spring", stiffness: 300, damping: 30 },
-							opacity: { duration: 0.2 },
-						}}
-					/>
-				</AnimatePresence>
+        <Background>
+          <div>ddfdsfds</div>
+        </Background>
+				<button onClick={nextSlide}>fsddfds</button>
 				<div className={styles.animation_container}>
 					<Dialog
 						onClick={handleDialogClick}
@@ -108,7 +81,6 @@ export default function Animation() {
 							setShowDialog(true);
 						}}
 					/>
-					<button onClick={nextSlide}>fsddfds</button>
 					<Ground />
 				</div>
 			</div>
