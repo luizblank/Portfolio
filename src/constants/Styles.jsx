@@ -8,7 +8,7 @@ export const Sprite = styled(motion.img)`
 `
 
 export const Dialog = styled(motion.div)`
-    background-image: url('./../../../public/dialog.png');
+    background-image: url('/dialog.png');
     background-repeat: no-repeat;
     background-origin: content-box;
     width: ${sprites_sizes.dialog.string_width};
