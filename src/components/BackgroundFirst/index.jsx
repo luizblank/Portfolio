@@ -4,7 +4,7 @@ export default function BackgroundFirst() {
     return(
         <>
             <div className={styles.page}>
-                lol
+                primeiro
             </div>
         </>
     )

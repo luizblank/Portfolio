@@ -1,88 +1,113 @@
 import { useEffect, useState } from 'react';
-import { actions } from '../../constants/Actions';
+import { movements } from '../../constants/Actions';
 import { sprites_sizes } from '../../constants/SpritesSizes';
 import { Sprite, Dialog, Ground } from '../../constants/Styles';
 import { backgrounds } from '../../constants/Backgrounds';
-import Background from '../../components/Background';
+import { motion } from 'framer-motion';
 import styles from './styles.module.scss';
 
 
 export default function Animation() {
-	const [firstAction, setFirstAction] = useState(
-		sessionStorage.getItem('last_action') ? parseInt(sessionStorage.getItem('last_action')) : 0
+	const [firstMovement, setFirstMovement] = useState(
+		sessionStorage.getItem('last_movement') ? parseInt(sessionStorage.getItem('last_movement')) : 0
 	);
 
-	const [crrAction, setCrrAction] = useState(actions[firstAction]);
-	const [crrSprite, setCrrSprite] = useState(crrAction.start_anm.url);
+	const [crrMovement, setCrrMovement] = useState(movements[firstMovement]);
+	const [crrSprite, setCrrSprite] = useState(crrMovement.start_anm.url);
 
-	const [showDialog, setShowDialog] = useState(crrAction.text ? true : false);
-	const [backgroundIndex, setBackgroundIndex] = useState(0);
+	const [showDialog, setShowDialog] = useState(crrMovement.text ? true : false);
+
+	const [currentIndex, setCurrentIndex] = useState(0);
 
 	useEffect(() => {
-		setCrrSprite(crrAction.start_anm.url);
-	}, [crrAction]);
+		setCrrSprite(crrMovement.start_anm.url);
+	}, [crrMovement]);
 
 	function handleAnimationComplete() {
-		if (crrAction.id < actions.length - 1) {
-			const next_action = actions[crrAction.id + 1];
-			setCrrAction(next_action);
+		if (crrMovement.id < movements.length - 1) {
+			const next_movement = movements[crrMovement.id + 1];
+			setCrrMovement(next_movement);
 		}
 	};
 
-	const handleDialogClick = () => {
+	function handleDialogClick() {
 		setShowDialog(false);
 		handleAnimationComplete();
 	}
 
-	const nextSlide = () => {
-		setBackgroundIndex((prevIndex) => (prevIndex + 1) % backgrounds.length);
-	};
-
-	const prevSlide = () => {
-		setBackgroundIndex((prevIndex) =>
-			prevIndex === 0 ? backgrounds.length - 1 : prevIndex - 1
-		);
-	};
+	function nextSlide() {
+		setCurrentIndex((prevIndex) => (prevIndex + 1) % backgrounds.length);
+		handleAnimationComplete();
+	}
+	
+	function prevSlide() {
+		setCurrentIndex((prevIndex) => prevIndex - 1 < 0 ? backgrounds.length - 1 : prevIndex - 1 );
+		handleAnimationComplete();
+	}
 
 	return (
 		<>
 			<div className={styles.container}>
-        <Background>
-          <div>ddfdsfds</div>
-        </Background>
-				<button onClick={nextSlide}>fsddfds</button>
+
+				<motion.div className={styles.carousel}>
+					<motion.div
+						className={styles.inner_carousel}
+						animate={{ x: `-${currentIndex * 100}%` }}
+						transition={{ duration: 0.8, ease: 'easeInOut' }}
+					>
+						{backgrounds.map((background, index) => (
+							<motion.div key={index} className={styles.item}>
+								{background}
+							</motion.div>
+						))}
+					</motion.div>
+				</motion.div>
+				<button onClick={() => nextSlide()}>proxima</button>
+				<button onClick={() => prevSlide()}>antigo</button>
+
 				<div className={styles.animation_container}>
 					<Dialog
-						onClick={handleDialogClick}
+						onClick={() => handleDialogClick()}
 						style={{ display: showDialog ? 'flex' : 'none' }}
 						animate={{
-							x: crrAction.x - ((sprites_sizes.dialog.int_width - sprites_sizes.character.int_width) / 2),
-							y: crrAction.y
+							x: crrMovement.x - ((sprites_sizes.dialog.int_width - sprites_sizes.character.int_width) / 2),
+							y: crrMovement.y
 						}}
-						transition={{ type: 'tween', duration: crrAction.duration, delay: crrAction.delay }}
+						transition={{ type: 'tween', duration: crrMovement.duration, delay: crrMovement.delay }}
 					>
 						<div className={styles.dialog_text}>
-							{crrAction.text}
+							{crrMovement.text}
 						</div>
 					</Dialog>
 					<Sprite
 						alt='sprite'
 						src={crrSprite}
-						style={{ scaleX: crrAction.scaleX }}
-						animate={{ x: crrAction.x, y: crrAction.y }}
-						transition={{ type: 'tween', duration: crrAction.duration, delay: crrAction.delay }}
+						style={{ scaleX: crrMovement.scaleX }}
+						animate={{ x: crrMovement.x, y: crrMovement.y }}
+						transition={{ type: 'tween', duration: crrMovement.duration, delay: crrMovement.delay }}
 						onAnimationComplete={() => {
-							if (crrAction.text == null) {
-								handleAnimationComplete();
-								setCrrSprite(crrAction.final_anm.url);
+							if (crrMovement.text != null) {
+								setCrrSprite(crrMovement.final_anm.url);
+								setShowDialog(true);
 								return;
 							}
-							setCrrSprite(crrAction.final_anm.url);
-							setShowDialog(true);
+							if (crrMovement.action != null) {
+								setCrrSprite(crrMovement.final_anm.url);
+								setTimeout(() => {
+									if (crrMovement.action == "nextSlide")
+									nextSlide();
+									if (crrMovement.action == "prevSlide")
+										prevSlide();
+								}, crrMovement.action_time);
+								return;
+							}
+							handleAnimationComplete();
+							setCrrSprite(crrMovement.final_anm.url);
 						}}
 					/>
 					<Ground />
 				</div>
+				
 			</div>
 		</>
 	);

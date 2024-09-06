@@ -1,10 +1,10 @@
 import styles from './styles.module.scss';
 
-export default function BackgroundSecond() {
+export default function BackgroundFourth() {
     return(
         <>
             <div className={styles.page}>
-                segundo
+                quarto
             </div>
         </>
     )
