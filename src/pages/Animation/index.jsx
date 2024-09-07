@@ -49,12 +49,10 @@ export default function Animation() {
 
 	function nextSlide() {
 		setCurrentIndex((prevIndex) => (prevIndex + 1) % backgrounds.length);
-		handleAnimationComplete();
 	};
 	
 	function prevSlide() {
 		setCurrentIndex((prevIndex) => prevIndex - 1 < 0 ? backgrounds.length - 1 : prevIndex - 1 );
-		handleAnimationComplete();
 	};
 
 	return (
@@ -77,12 +75,12 @@ export default function Animation() {
 				<button onClick={() => nextSlide()}>proxima</button>
 				<button onClick={() => prevSlide()}>antigo</button>
 
-				<div className={styles.animation_container}>
+				<motion.div className={styles.animation_container}>
 					<Dialog
 						onClick={() => handleDialogClick()}
 						style={{ display: showDialog ? 'flex' : 'none' }}
 						animate={{
-							x: (windowDimensions.width * crrMovement.x) - (sprites_sizes.character.int_width / 2) - ((sprites_sizes.dialog.int_width - sprites_sizes.character.int_width) / 2),
+							x: (windowDimensions.width * crrMovement.x) - ((sprites_sizes.dialog.int_width - sprites_sizes.character.int_width) / 2),
 							y: windowDimensions.height * crrMovement.y
 						}}
 						transition={{ type: 'tween', duration: crrMovement.duration, delay: crrMovement.delay }}
@@ -92,11 +90,13 @@ export default function Animation() {
 						</div>
 					</Dialog>
 					<Sprite
+						key={crrMovement.id}
 						alt='sprite'
 						src={crrSprite}
 						style={{ scaleX: crrMovement.scaleX }}
+						initial ={{ x: windowDimensions.width * movements[crrMovement.id == 0 ? 0 :crrMovement.id - 1].x }}
 						animate={{
-							x: (windowDimensions.width * crrMovement.x) - (sprites_sizes.character.int_width / 2),
+							x: windowDimensions.width * crrMovement.x,
 							y: windowDimensions.height * crrMovement.y
 						}}
 						transition={{ type: 'tween', duration: crrMovement.duration, delay: crrMovement.delay }}
@@ -110,6 +110,7 @@ export default function Animation() {
 									if (crrMovement.action == "prevSlide") {
 										prevSlide();
 									}
+									handleAnimationComplete();
 								}, crrMovement.action_time);
 								return;
 							}
@@ -123,7 +124,7 @@ export default function Animation() {
 						}}
 					/>
 					<Ground />
-				</div>
+				</motion.div>
 				
 			</div>
 		</>
