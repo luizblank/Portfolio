@@ -11,19 +11,23 @@ export default function Animation() {
 	const [firstMovement, setFirstMovement] = useState(
 		sessionStorage.getItem('last_movement') ? parseInt(sessionStorage.getItem('last_movement')) : 0
 	);
+
 	const [windowDimensions, setWindowDimensions] = useState({
 		width: window.innerWidth,
 		height: window.innerHeight,
 	});
+
 	const [crrMovement, setCrrMovement] = useState(movements[firstMovement]);
 	const [crrSprite, setCrrSprite] = useState(crrMovement.start_anm.url);
+	
 	const [showDialog, setShowDialog] = useState(crrMovement.text ? true : false);
+
 	const [currentIndex, setCurrentIndex] = useState(0);
 
 	useEffect(() => {
 		setCrrSprite(crrMovement.start_anm.url);
 	}, [crrMovement]);
-	
+
 	useEffect(() => {
 		const handleResize = () => {
 		setWindowDimensions({
@@ -63,7 +67,8 @@ export default function Animation() {
 					<motion.div
 						className={styles.inner_carousel}
 						animate={{ x: `-${currentIndex * 100}%` }}
-						transition={{ duration: 0.8, ease: 'easeInOut' }}
+						transition={{ duration: 1, ease: 'easeInOut' }}
+						onAnimationComplete={() => handleAnimationComplete()}
 					>
 						{backgrounds.map((background, index) => (
 							<motion.div key={index} className={styles.item}>
@@ -94,7 +99,7 @@ export default function Animation() {
 						alt='sprite'
 						src={crrSprite}
 						style={{ scaleX: crrMovement.scaleX }}
-						initial ={{ x: windowDimensions.width * movements[crrMovement.id == 0 ? 0 :crrMovement.id - 1].x }}
+						initial ={{ x: windowDimensions.width * movements[crrMovement.id == 0 ? 0 : crrMovement.id - 1].x }}
 						animate={{
 							x: windowDimensions.width * crrMovement.x,
 							y: windowDimensions.height * crrMovement.y
@@ -110,7 +115,6 @@ export default function Animation() {
 									if (crrMovement.action == "prevSlide") {
 										prevSlide();
 									}
-									handleAnimationComplete();
 								}, crrMovement.action_time);
 								return;
 							}
