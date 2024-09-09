@@ -4,7 +4,7 @@ export default function BackgroundFirst() {
     return(
         <>
             <div className={styles.page}>
-                primeiro
+                <img className={styles.palm_painting} src='/palm tree.png'/>
             </div>
         </>
     )

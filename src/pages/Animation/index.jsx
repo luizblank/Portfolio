@@ -6,7 +6,6 @@ import { backgrounds } from '../../constants/Backgrounds';
 import { motion } from 'framer-motion';
 import styles from './styles.module.scss';
 
-
 export default function Animation() {
 	const [firstMovement, setFirstMovement] = useState(
 		sessionStorage.getItem('last_movement') ? parseInt(sessionStorage.getItem('last_movement')) : 0
