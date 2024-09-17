@@ -76,8 +76,8 @@ export default function Animation() {
 						))}
 					</motion.div>
 				</motion.div>
-				<button onClick={() => nextSlide()}>proxima</button>
-				<button onClick={() => prevSlide()}>antigo</button>
+				{/* <button onClick={() => nextSlide()}>proxima</button> */}
+				{/* <button onClick={() => prevSlide()}>antigo</button> */}
 
 				<motion.div className={styles.animation_container}>
 					<Dialog

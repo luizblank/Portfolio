@@ -13,6 +13,9 @@ export const Dialog = styled(motion.div)`
     background-origin: content-box;
     width: ${sprites_sizes.dialog.string_width};
     height: ${sprites_sizes.dialog.string_height};
+    font-family: "Silkscreen", sans-serif;
+    font-weight: 400;
+    font-style: normal;
     margin-bottom: 20px;
     display: flex;
     justify-content: center;
@@ -21,7 +24,7 @@ export const Dialog = styled(motion.div)`
 
 export const Ground = styled.div`
     background-color: white;
-    border-top: 8px solid black;
+    border-top: 4px solid black;
     width: 100%;
     height: 100px;
     padding: 0;

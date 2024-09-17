@@ -1,0 +1,38 @@
+.navbar {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+    z-index: +1;
+    padding: 20px;
+}
+
+.links {
+    font-family: "Josefin Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-size: 20px;
+    font-weight: 600;
+    font-style: normal;
+    text-decoration: none;
+    color: black;
+    padding: 5px;
+    outline: 0;
+    border: 0;
+    animation: none;
+    background-color: transparent;
+}
+
+.links:hover {
+    cursor: pointer;
+    animation: wiggle 2s infinite;
+}
+
+@keyframes wiggle {
+    0% {transform: rotate(5deg);}
+    25% {transform: rotate(-5deg);}
+    50% {transform: rotate(5deg);}
+    75% {transform: rotate(-5deg);}
+    100% {transform: rotate(5deg);}
+}

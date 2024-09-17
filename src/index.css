@@ -18,3 +18,13 @@ body {
 	margin: 0;
 	padding: 0;
 }
+
+::-moz-selection {
+	color: white;
+	background-color: black;
+}
+
+::selection {
+	color: white;
+	background-color: black;
+}

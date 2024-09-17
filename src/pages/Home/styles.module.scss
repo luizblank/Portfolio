@@ -1,0 +1,80 @@
+.container {
+    text-align: center;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    left: 50%;
+    top: 50%;
+
+    h1 {
+        display: flex;
+        flex-direction: row;
+        text-align: center;
+        font-size: 35px;
+        margin: 0 0 10px 0;
+    }
+}
+
+.josefin {
+    font-family: "Josefin Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+
+.gochi {
+    font-family: "Gochi Hand", cursive;
+    font-weight: 400;
+    font-style: normal;
+    letter-spacing: 2px;
+}
+
+.description {
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.text_arrow {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.arrow {
+    margin: 0 0 0 5px;
+    transform: rotate(45deg);
+}
+
+.project {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    padding: 10px;
+    text-align: left;
+    font-family: "Josefin Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-size: 20px;
+    font-weight: 600;
+    font-style: normal;
+
+    a {
+        text-decoration: none;
+        color: white;
+        background: linear-gradient(to left, black 50%, white 50%) right;
+        background-size: 200%;
+        transition: .2s ease-out;
+        padding: 2px;
+    }
+
+    a:hover{
+        color: black;
+        background-position: left;
+    }
+}
