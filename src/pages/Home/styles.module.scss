@@ -19,6 +19,8 @@
 }
 
 .josefin {
+    display: flex;
+    flex-direction: row;
     font-family: "Josefin Sans", sans-serif;
     font-optical-sizing: auto;
     font-style: normal;
@@ -49,7 +51,7 @@
 
 .arrow {
     margin: 0 0 0 5px;
-    transform: rotate(45deg);
+    animation: updownrotated 0.5s alternate infinite;
 }
 
 .project {
@@ -60,7 +62,7 @@
     text-align: left;
     font-family: "Josefin Sans", sans-serif;
     font-optical-sizing: auto;
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 600;
     font-style: normal;
 
@@ -73,8 +75,13 @@
         padding: 2px;
     }
 
-    a:hover{
+    a:hover {
         color: black;
         background-position: left;
     }
+}
+
+@keyframes updownrotated {
+    0% { transform: translateX(0) translateY(0) rotate(45deg);  }
+    100% { transform: translateX(3px) translateY(-3px) rotate(45deg); }
 }

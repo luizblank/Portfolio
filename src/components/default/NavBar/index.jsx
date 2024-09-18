@@ -21,7 +21,7 @@ export default function NavBar() {
                 <button
                     className={styles.links} type="button"
                     onClick={() => { window.open('/contact', '_self') }}
-                >get in touch</button>
+                >contact</button>
             </div>
         </>
     )

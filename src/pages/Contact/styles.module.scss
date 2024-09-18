@@ -1,0 +1,96 @@
+.container {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    left: 50%;
+    top: 50%;
+
+    h1 {
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        text-align: center;
+        font-size: 35px;
+        margin: 0 0 15px 0;
+        outline: white solid 2px;
+    }
+}
+
+.back {
+    color: white;
+    background-color: black;
+    outline: white solid 2px;
+    width: 150px;
+    height: auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 35px;
+
+    a {
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    a:hover {
+        animation: spin 2s linear infinite;
+    }
+}
+
+.front {
+    position: absolute;
+    right: 0;
+    width: 150px;
+    height: auto;
+    color: black;
+    text-align: start;
+    background-color: white;
+    animation-name: falling;
+    animation-delay: 4s;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+    z-index: +1;
+}
+
+@keyframes spin {
+    from {
+        transform-origin: center;
+        transform: rotate(0deg);
+    }
+    to {
+        transform-origin: center;
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes falling {
+    0% {
+        transform-origin: bottom left;
+        transform: translateX(0) rotate(0deg);
+    }
+    15% {
+        transform-origin: bottom left;
+        transform: translateX(0) rotate(100deg);
+    }
+    30% {
+        transform-origin: bottom left;
+        transform: translateX(0) rotate(80deg);
+    }
+    45% {
+        transform-origin: bottom left;
+        transform: translateX(0) rotate(95deg);
+    }
+    60% {
+        transform-origin: bottom left;
+        transform: translateX(0) rotate(90deg);
+    }
+    100% {
+        transform-origin: bottom left;
+        transform: translateY(70vh) rotate(90deg);
+    }
+}
