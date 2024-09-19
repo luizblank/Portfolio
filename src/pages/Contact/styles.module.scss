@@ -51,7 +51,7 @@
     text-align: start;
     background-color: white;
     animation-name: falling;
-    animation-delay: 4s;
+    animation-delay: 1s;
     animation-duration: 2s;
     animation-fill-mode: forwards;
     z-index: +1;
@@ -71,26 +71,26 @@
 @keyframes falling {
     0% {
         transform-origin: bottom left;
-        transform: translateX(0) rotate(0deg);
+        transform: rotate(0deg);
     }
     15% {
         transform-origin: bottom left;
-        transform: translateX(0) rotate(100deg);
+        transform: rotate(100deg);
     }
     30% {
         transform-origin: bottom left;
-        transform: translateX(0) rotate(80deg);
+        transform: rotate(80deg);
     }
     45% {
         transform-origin: bottom left;
-        transform: translateX(0) rotate(95deg);
+        transform: rotate(95deg);
     }
     60% {
         transform-origin: bottom left;
-        transform: translateX(0) rotate(90deg);
+        transform: rotate(90deg);
     }
     100% {
         transform-origin: bottom left;
-        transform: translateY(70vh) rotate(90deg);
+        transform: rotate(95deg);
     }
 }

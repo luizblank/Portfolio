@@ -1,0 +1,101 @@
+.container {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    left: 50%;
+    top: 50%;
+
+    h1 {
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        text-align: center;
+        font-size: 35px;
+        margin: 0 0 15px 0;
+        outline: white solid 2px;
+    }
+}
+
+.ab {
+    transform: translateX(-60px);
+    animation-name: push;
+    animation-delay: 1s;
+    animation-duration: 0.1s;
+    animation-fill-mode: forwards;
+}
+
+.out {
+    animation-name: shake;
+    animation-delay: 1.11s;
+    animation-duration: 1.2s;
+    animation-fill-mode: forwards;
+}
+
+.me {
+    transform: translateX(0);
+    animation-name: pushed;
+    animation-delay: 1.12s;
+    animation-duration: 0.7s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes push {
+    0% {
+        transform: translateX(-60px);
+    }
+    100% {
+        transform: translateX(0px);
+    }
+}
+
+@keyframes shake {
+    0% {
+        transform: rotate(2deg);
+    }
+    25% {
+        transform: rotate(-2deg);
+    }
+    50% {
+        transform: rotate(2deg);
+    }
+    75% {
+        transform: rotate(-2deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+@keyframes pushed {
+    0% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(30px) rotate(10deg);
+    }
+    60% {
+        transform: translateX(30px) rotate(10deg);
+    }
+    70% {
+        transform: translateX(30px) rotate(10deg);
+    }
+    80% {
+        transform: translateX(30px) rotate(10deg);
+    }
+    90% {
+        transform: translateX(30px) rotate(10deg);
+    }
+    99.99% {
+        transform: translateX(30px) rotate(5deg);
+        background-color: white;
+        color: black;
+    }
+    100% {
+        transform: translateX(30px) rotate(0deg);
+        background-color: black;
+        color: white;
+    }
+}

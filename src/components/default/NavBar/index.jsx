@@ -12,8 +12,8 @@ export default function NavBar() {
                 >home</button>
                 <button
                     className={styles.links} type="button"
-                    onClick={() => { window.open('/introduction', '_self') }}
-                >introduction</button>
+                    onClick={() => { window.open('/projects', '_self') }}
+                >my projects</button>
                 <button
                     className={styles.links} type="button"
                     onClick={() => { window.open('/about', '_self') }}
