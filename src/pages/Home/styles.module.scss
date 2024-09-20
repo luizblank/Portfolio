@@ -67,17 +67,17 @@
     font-style: normal;
 
     a {
+        &:hover {
+            color: black;
+            background-position: left;
+        }
+
         text-decoration: none;
         color: white;
         background: linear-gradient(to left, black 50%, white 50%) right;
         background-size: 200%;
         transition: .2s ease-out;
         padding: 2px;
-    }
-
-    a:hover {
-        color: black;
-        background-position: left;
     }
 }
 
