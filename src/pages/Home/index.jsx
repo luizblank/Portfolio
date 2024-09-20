@@ -6,8 +6,8 @@ export default function Home() {
         <>
             <div className={styles.container}>
                 <h1>
-                    <div className={styles.josefin}>luizblank's&nbsp;</div>
-                    <div className={styles.gochi}>portfolio</div>
+                    <div className={styles.josefin}>luizblank's</div>
+                    <div className={styles.gochi}>&nbsp;portfolio</div>
                 </h1>
                 <div className={styles.description}>
                     <div>welcome to my portfolio</div>

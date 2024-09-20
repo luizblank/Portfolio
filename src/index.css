@@ -7,17 +7,27 @@
 	text-rendering: optimizeLegibility;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+
+	color: black;
+	background-color: white;
+}
+
+* {
+	background-color: white;
+	color: black;
 }
 
 html {
 	margin: 0;
 	padding: 0;
 	overflow: hidden;
+	background-color: white;
 }
 
 body {
 	margin: 0;
 	padding: 0;
+	background-color: white;
 }
 
 ::-moz-selection {
