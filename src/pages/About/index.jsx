@@ -76,7 +76,7 @@ export default function About() {
                             </div>
                         </div>
                         <div className={styles.topic}>
-                            <h2><a href='https://www.senaipr.org.br/' target='_blank'>senai</a>&nbsp;courses</h2>
+                            <h2><a href='https://www.senaipr.org.br/' target='_blank'>senai</a>&nbsp;technical courses</h2>
                             <div className={styles.description}>
                                 along with my internal course at bosch, i took two technical courses provided by them at senai,
                                 which were part of the internal course's schedule<br/>
