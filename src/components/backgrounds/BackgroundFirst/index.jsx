@@ -6,7 +6,7 @@ export default function BackgroundFirst() {
     return(
         <>
             <div className={styles.page}>
-                <Lamp src={lamp}/>
+                <Lamp className={styles.lamp} src={lamp}/>
                 <Palm src={palm}/>
                 <Table src={table}/>
                 <Cat src={cat}/>

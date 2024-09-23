@@ -100,7 +100,7 @@ export default function Animation() {
 						<motion.div
 							className={styles.inner_carousel}
 							animate={{ x: `-${currentIndex * 100}%` }}
-							transition={{ duration: 1, ease: 'easeInOut' }}
+							transition={{ duration: crrMovement.page_transition ? crrMovement.page_transition : 1, ease: 'easeInOut' }}
 							onAnimationComplete={() => handleAnimationComplete()}
 						>
 							{backgrounds.map((background, index) => (
