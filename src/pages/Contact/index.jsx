@@ -9,9 +9,9 @@ export default function Contact() {
                 <h1>
                     <div>contact&nbsp;</div>
                     <div className={styles.back}>
-                        <a className={styles.redirect} href="https://github.com/luizblank" target="_blank"><FaGithub/></a>
-                        <a className={styles.redirect} href="https://www.linkedin.com/in/luiz-antonio-rosa-cardoso-9005512b7/" target="_blank"><FaLinkedin/></a>
-                        <a href=""><MdEmail/></a>
+                        <a className={styles.redirect} href="https://github.com/luizblank" target="_blank"><FaGithub color="white"/></a>
+                        <a className={styles.redirect} href="https://www.linkedin.com/in/luiz-antonio-rosa-cardoso-9005512b7/" target="_blank"><FaLinkedin className={styles.icon}/></a>
+                        <a href=""><MdEmail className={styles.icon}/></a>
                     </div>
                     <div className={styles.front}>me</div>
                 </h1>

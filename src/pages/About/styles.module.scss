@@ -11,6 +11,7 @@
     align-items: center;
     flex-direction: column;
     width: 30vw;
+    padding: 20px;
 
     h1 {
         position: relative;
@@ -39,7 +40,7 @@
         flex-direction: column;
         font-family: "DM Sans", sans-serif;
         font-weight: 800;
-        font-size: 22px;
+        font-size: 20px;
         font-size: normal;
         text-align: center;
         margin-bottom: 15px;
@@ -52,8 +53,9 @@
     }
 
     .topic {
-        width: 13vw;
+        width: 100%;
         height: auto;
+        padding: 10px;
     }
 }
 
@@ -160,12 +162,6 @@
 }
 
 .show_button {
-    &:hover {
-        cursor: pointer;
-        color: black;
-        background-position: left;
-    }
-
     font-family: "Poppins", sans-serif;
     font-weight: 400;
     font-style: normal;
@@ -177,10 +173,16 @@
     color: white;
     background: linear-gradient(to left, black 50%, white 50%) right;
     background-size: 200%;
-    transition: 0.2s ease-out;
+    transition: 0.3s ease-out;
     border: 0;
     outline: 0;
     padding: 10px;
+
+    &:hover {
+        cursor: pointer;
+        color: black;
+        background-position: left;
+    }
 }
 
 #left_topics {

@@ -16,7 +16,7 @@ export default function About() {
                     <h1>
                         working
                     </h1>
-                    <div className={styles.container2}>
+                    <div className={styles.container}>
                         <div className={styles.topic}>
                             <h2>web programmer at&nbsp;<a href='https://www.bosch.com.br/' target='_blank'>bosch</a></h2>
                             <div className={styles.description}>
@@ -67,7 +67,7 @@ export default function About() {
                     <h1>
                         learning
                     </h1>
-                    <div className={styles.container2}>
+                    <div className={styles.container}>
                         <div className={styles.topic}>
                             <h2><a href='https://www.ccaa.com.br/' target='_blank'>ccaa</a>&nbsp;english course</h2>
                             <div className={styles.description}>
