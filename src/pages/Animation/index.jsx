@@ -36,7 +36,6 @@ export default function Animation() {
 
 		function typeWriter() {
 			if (i < dialogText.length) {
-				console.log(dialogText)
 				currentText += dialogText.charAt(i);
 				setDialogTextDisplay(currentText);
 				setTimeout(typeWriter, speed);

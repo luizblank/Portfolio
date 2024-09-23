@@ -1,6 +1,7 @@
 export const character = {
     static: { name: "static", url: "/static.gif"},
     walking: { name: "walking", url: "/walking.gif" },
+    presenting: { name: "presenting", url: "/presenting.gif" },
     talking: { name: "talking", url: "/talking.gif" },
     talking_pointing_br: { name: "talking_pointing_br", url: "/talking_pointing_br.gif" },
     changing: { name: "changing", url: "/changing.gif" },
