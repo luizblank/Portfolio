@@ -44,10 +44,74 @@
         text-align: center;
     }
 
-    img {
-        width: 50%;
-        height: auto;
+    video {
+        width: auto;
+        height: 40%;
         border-radius: 20px;
         border: 8px solid black;
+    }
+
+    a {
+        display: none;
+        justify-content: center;
+        align-items: center;
+        text-decoration: none;
+        color: black;
+        width: auto;
+        border-radius: 20px;
+    }
+}
+
+.fullscreenAnimation {
+    animation: fullscreen 0.2s ease-out forwards;
+}
+
+.minimizeAnimation {
+    animation: minimize 0.2s ease-out forwards;
+}
+
+.openlinkAnimation {
+    animation: openlink 0.4s ease-out forwards;
+}
+
+.spinAnimation {
+    animation: spin 3s linear infinite;
+}
+
+@keyframes fullscreen {
+    0% {
+        height: 40%;
+    }
+    100% {
+        height: 70vh;
+    }
+}
+
+@keyframes minimize {
+    0% {
+        height: 70vh;
+    }
+    100% {
+        height: 0vh;
+    }
+}
+
+@keyframes openlink {
+    0% {
+        height: 0px;
+    }
+    100% {
+        height: auto;
+    }
+}
+
+@keyframes spin {
+    from {
+        transform-origin: center;
+        transform: rotate(0deg);
+    }
+    to {
+        transform-origin: center;
+        transform: rotate(360deg);
     }
 }

@@ -14,6 +14,7 @@ import Home from './pages/Home';
 import Animation from './pages/Animation';
 import About from './pages/About';
 import Contact from './pages/Contact';
+import { GlobalProvider } from './context/globalContext';
 
 const router = createBrowserRouter([
     {
@@ -37,8 +38,10 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')).render(
     <StrictMode>
-        <NavBar/>
-        <RouterProvider router={router} />
+        <GlobalProvider>
+            <NavBar/>
+            <RouterProvider router={router} />
+        </GlobalProvider>
         <Analytics/>
         <SpeedInsights/>
     </StrictMode>,

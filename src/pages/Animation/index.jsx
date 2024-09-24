@@ -6,8 +6,11 @@ import { backgrounds } from '../../constants/Backgrounds';
 import { motion } from 'framer-motion';
 import { character } from '../../constants/Sprites';
 import styles from './styles.module.scss';
+import { useGlobalContext } from '../../context/globalContext';
 
 export default function Animation() {
+	const { background2Status, setBackground2Status } = useGlobalContext();
+
 	const [tutorial, setTutorial] = useState(sessionStorage.getItem('tutorial') ? false : true);
 	const [clicked, setClicked] = useState(false);
 	const [dialogText, setDialogText] = useState("to continue my dialogues, click on the speech balloon.")
@@ -138,6 +141,13 @@ export default function Animation() {
 							onAnimationComplete={() => {
 								if (crrMovement.action != null) {
 									setCrrSprite(crrMovement.final_anm.url);
+									if (crrMovement.action == "setBackground2Status") {
+										setTimeout(() => setBackground2Status(true), crrMovement.action_time);
+										setTimeout(() => {
+											handleAnimationComplete();
+											return;
+										}, crrMovement.action_time * 2);
+									}
 									setTimeout(() => {
 										if (crrMovement.action == "nextSlide") {
 											nextSlide();
