@@ -9,14 +9,16 @@
     height: 100%;
     position: absolute;
     left: 250%;
-    top: 50%;
-    transform: translate(-50%, -60%);
+    transform: translate(-50%, 0);
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
 
     img {
+        position: absolute;
+        bottom: 5px;
+        transform: translateY(0) rotate(1deg);
         width: auto;
         height: 50%;
     }

@@ -9,7 +9,7 @@ import styles from './styles.module.scss';
 import { useGlobalContext } from '../../context/GlobalContext';
 
 export default function Animation() {
-	const [jumpThrough, setjumpThrough] = useState(0);
+	const [jumpThrough, setjumpThrough] = useState(25);
 
 	const { background2Status, setBackground2Status } = useGlobalContext();
 
