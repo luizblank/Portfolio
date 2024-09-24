@@ -9,7 +9,7 @@ import styles from './styles.module.scss';
 import { useGlobalContext } from '../../context/GlobalContext';
 
 export default function Animation() {
-	const [jumpThrough, setjumpThrough] = useState(24);
+	const [jumpThrough, setjumpThrough] = useState(0);
 
 	const { background2Status, setBackground2Status } = useGlobalContext();
 
@@ -104,7 +104,10 @@ export default function Animation() {
 						<motion.div
 							className={styles.inner_carousel}
 							animate={{ x: `-${currentIndex * 100}%` }}
-							transition={{ duration: crrMovement.page_transition ? crrMovement.page_transition : 1, ease: 'easeInOut' }}
+							transition={{ 
+								duration: crrMovement.page_transition ?
+								crrMovement.id > jumpThrough ? crrMovement.page_transition : 0 : 1,
+								ease: 'easeInOut' }}
 							onAnimationComplete={
 								() => crrMovement.action == "wNextSlide" || crrMovement.action == "wPrevSlide" ?
 								0 : handleAnimationComplete()
@@ -145,12 +148,13 @@ export default function Animation() {
 							transition={{ type: 'tween', duration: crrMovement.id > jumpThrough ? crrMovement.duration : 0, delay: crrMovement.delay }}
 							onAnimationStart={() => {
 								if (crrMovement.action) {
+									let delay = crrMovement.id > jumpThrough ? crrMovement.action_delay : 0;
 									if (crrMovement.action == "wNextSlide") {
-										setTimeout(() => nextSlide(), crrMovement.action_delay);
+										setTimeout(() => nextSlide(), crrMovement.delay);
 										handleAnimationComplete();
 									}
 									if (crrMovement.action == "wPrevSlide") {
-										setTimeout(() => prevSlide(), crrMovement.action_delay);
+										setTimeout(() => prevSlide(), crrMovement.delay);
 										handleAnimationComplete();
 									}
 									return;

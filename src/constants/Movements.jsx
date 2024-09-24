@@ -26,6 +26,6 @@ export var movements = [
     { id: 22, x: 0.47, y: 0, start_anm: character.walking, final_anm: character.talking, duration: 2, delay: 0, scaleX: -1, text: "this was the first time they used external apis like this" },
     { id: 23, x: 0.47, y: 0, start_anm: character.talking, final_anm: character.talking, duration: 0, delay: 0, scaleX: 1, text: "which gave a great overview of what you can do with them" },
     { id: 24, x: 0.47, y: 0, start_anm: character.talking, final_anm: character.talking, duration: 0, delay: 0, scaleX: 1, text: "sometimes a two week project can teach you a lot" },
-    { id: 25, x: 0.1, y: 0, start_anm: character.walking, final_anm: character.talking, duration: 1, delay: 0, scaleX: -1, text: "wanting to go to the next project, just tell me"},
+    { id: 25, x: 0.1, y: 0, start_anm: character.walking, final_anm: character.talking, duration: 4, delay: 0, scaleX: -1, text: "wanting to go to the next project, just tell me"},
     { id: 26, x: 0.47, y: 0, start_anm: character.walking, final_anm: character.static, duration: 6, delay: 0, scaleX: 1, action: "wNextSlide", action_time: 0, action_delay: 3, page_transition: 6 },
 ]

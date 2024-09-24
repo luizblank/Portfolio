@@ -1,10 +1,12 @@
 import styles from './styles.module.scss';
 
 export default function BackgroundThird() {
-    return(
+    return (
         <>
             <div className={styles.page}>
-                terceiro
+                <div className={styles.presentation}>
+                    <img src='/esteira.png' alt='esteira_lego'/>
+                </div>
             </div>
         </>
     )
