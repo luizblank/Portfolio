@@ -6,9 +6,11 @@ import { backgrounds } from '../../constants/Backgrounds';
 import { motion } from 'framer-motion';
 import { character } from '../../constants/Sprites';
 import styles from './styles.module.scss';
-import { useGlobalContext } from '../../context/globalContext';
+import { useGlobalContext } from '../../context/GlobalContext';
 
 export default function Animation() {
+	const [jumpThrough, setjumpThrough] = useState(24);
+
 	const { background2Status, setBackground2Status } = useGlobalContext();
 
 	const [tutorial, setTutorial] = useState(sessionStorage.getItem('tutorial') ? false : true);
@@ -103,7 +105,10 @@ export default function Animation() {
 							className={styles.inner_carousel}
 							animate={{ x: `-${currentIndex * 100}%` }}
 							transition={{ duration: crrMovement.page_transition ? crrMovement.page_transition : 1, ease: 'easeInOut' }}
-							onAnimationComplete={() => handleAnimationComplete()}
+							onAnimationComplete={
+								() => crrMovement.action == "wNextSlide" || crrMovement.action == "wPrevSlide" ?
+								0 : handleAnimationComplete()
+							}
 						>
 							{backgrounds.map((background, index) => (
 								<motion.div key={index} className={styles.item}>
@@ -115,7 +120,7 @@ export default function Animation() {
 
 					<motion.div className={styles.animation_container}>
 						<Dialog
-							onClick={() => handleDialogClick()}
+							onClick={ () => handleDialogClick() }
 							style={{ display: showDialog ? 'flex' : 'none' }}
 							animate={{
 								x: (windowDimensions.width * crrMovement.x) - ((sprites_sizes.dialog.int_width - sprites_sizes.character.int_width) / 2),
@@ -137,16 +142,30 @@ export default function Animation() {
 								x: windowDimensions.width * crrMovement.x,
 								y: windowDimensions.height * crrMovement.y
 							}}
-							transition={{ type: 'tween', duration: crrMovement.duration, delay: crrMovement.delay }}
+							transition={{ type: 'tween', duration: crrMovement.id > jumpThrough ? crrMovement.duration : 0, delay: crrMovement.delay }}
+							onAnimationStart={() => {
+								if (crrMovement.action) {
+									if (crrMovement.action == "wNextSlide") {
+										setTimeout(() => nextSlide(), crrMovement.action_delay);
+										handleAnimationComplete();
+									}
+									if (crrMovement.action == "wPrevSlide") {
+										setTimeout(() => prevSlide(), crrMovement.action_delay);
+										handleAnimationComplete();
+									}
+									return;
+								}
+							}}
 							onAnimationComplete={() => {
-								if (crrMovement.action != null) {
+								if (crrMovement.action) {
 									setCrrSprite(crrMovement.final_anm.url);
+									let duration = crrMovement.id > jumpThrough ? crrMovement.action_time : 0;
 									if (crrMovement.action == "setBackground2Status") {
-										setTimeout(() => setBackground2Status(true), crrMovement.action_time);
+										setTimeout(() => setBackground2Status(true), duration);
 										setTimeout(() => {
 											handleAnimationComplete();
 											return;
-										}, crrMovement.action_time * 2);
+										}, duration * 2);
 									}
 									setTimeout(() => {
 										if (crrMovement.action == "nextSlide") {
@@ -155,10 +174,10 @@ export default function Animation() {
 										if (crrMovement.action == "prevSlide") {
 											prevSlide();
 										}
-									}, crrMovement.action_time);
+									}, duration);
 									return;
 								}
-								if (crrMovement.text != null) {
+								if (crrMovement.text && crrMovement.id > jumpThrough) {
 									setCrrSprite(crrMovement.final_anm.url);
 									setShowDialog(true);
 									let speed = 60;

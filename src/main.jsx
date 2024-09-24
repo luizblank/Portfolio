@@ -14,7 +14,7 @@ import Home from './pages/Home';
 import Animation from './pages/Animation';
 import About from './pages/About';
 import Contact from './pages/Contact';
-import { GlobalProvider } from './context/globalContext';
+import { GlobalProvider } from './context/GlobalContext';
 
 const router = createBrowserRouter([
     {

@@ -2,7 +2,7 @@ import { character } from "./Sprites";
 
 export var movements = [
     { id: 0, x: -0.2, y: 0, start_anm: character.static, final_anm: character.static, duration: 0, delay: 2, scaleX: 1 },
-    { id: 1, x: 0.35, y: 0, start_anm: character.walking, final_anm: character.talking, duration: 7, delay: 0, scaleX: 1, text: "hi!" },
+    { id: 1, x: 0.35, y: 0, start_anm: character.walking, final_anm: character.talking, duration: 6, delay: 0, scaleX: 1, text: "hi!" },
     { id: 2, x: 0.35, y: 0, start_anm: character.talking, final_anm: character.talking, duration: 0, delay: 0, scaleX: 1, text: "welcome to the projects page" },
     { id: 3, x: 0.35, y: 0, start_anm: character.talking, final_anm: character.talking, duration: 0, delay: 0, scaleX: 1, text: "i'm <blank> and i'm going to guide you today" },
     { id: 4, x: 0.49, y: 0, start_anm: character.walking, final_anm: character.talking_pointing_br, duration: 3, delay: 0, scaleX: 1, text: "this is gizmo, he may appear a few times during the tour" },
@@ -24,7 +24,8 @@ export var movements = [
     { id: 20, x: 0.6, y: 0, start_anm: character.talking, final_anm: character.talking, duration: 0, delay: 0, scaleX: 1, text: "1. add new locations to your account by selecting them on the map" },
     { id: 21, x: 0.6, y: 0, start_anm: character.talking, final_anm: character.talking, duration: 0, delay: 0, scaleX: 1, text: "2. switching between them anytime you want" },
     { id: 22, x: 0.47, y: 0, start_anm: character.walking, final_anm: character.talking, duration: 2, delay: 0, scaleX: -1, text: "this was the first time they used external apis like this" },
-    { id: 23, x: 0.47, y: 0, start_anm: character.talking, final_anm: character.talking, duration: 2, delay: 0, scaleX: 1, text: "which gave a great overview of what you can do with them" },
-    { id: 24, x: 0.47, y: 0, start_anm: character.talking, final_anm: character.talking, duration: 2, delay: 0, scaleX: 1, text: "sometimes a two week project can teach you a lot" },
-    { id: 25, x: 0.47, y: 0, start_anm: character.static, final_anm: character.static, duration: 2, delay: 0, scaleX: 1},
+    { id: 23, x: 0.47, y: 0, start_anm: character.talking, final_anm: character.talking, duration: 0, delay: 0, scaleX: 1, text: "which gave a great overview of what you can do with them" },
+    { id: 24, x: 0.47, y: 0, start_anm: character.talking, final_anm: character.talking, duration: 0, delay: 0, scaleX: 1, text: "sometimes a two week project can teach you a lot" },
+    { id: 25, x: 0.1, y: 0, start_anm: character.walking, final_anm: character.talking, duration: 1, delay: 0, scaleX: -1, text: "wanting to go to the next project, just tell me"},
+    { id: 26, x: 0.47, y: 0, start_anm: character.walking, final_anm: character.static, duration: 6, delay: 0, scaleX: 1, action: "wNextSlide", action_time: 0, action_delay: 3, page_transition: 6 },
 ]
