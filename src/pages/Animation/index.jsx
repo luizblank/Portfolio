@@ -5,11 +5,11 @@ import { Character, Dialog, Ground } from '../../constants/Styles';
 import { backgrounds } from '../../constants/Backgrounds';
 import { motion } from 'framer-motion';
 import { character } from '../../constants/Sprites';
-import styles from './styles.module.scss';
 import { useGlobalContext } from '../../context/GlobalContext';
+import styles from './styles.module.scss';
 
 export default function Animation() {
-	const [jumpThrough, setjumpThrough] = useState(30);
+	const [jumpThrough, setjumpThrough] = useState(0);
 
 	const {
         setBackground2Status,
@@ -171,6 +171,7 @@ export default function Animation() {
 												return;
 											}, wait_time * 2);
 										}
+										return;
 									}
 									if (crrMovement.action == "setBackground3Status") {
 										setTimeout(() => setBackground3Status(true), wait_time);
@@ -187,7 +188,7 @@ export default function Animation() {
 											setShowDialog(false);
 											handleAnimationComplete();
 											return;
-										}, wait_time * 2);
+										}, wait_time * 1.2);
 									}
 									if (crrMovement.action == "nextSlide") {
 										setTimeout(() => nextSlide(), wait_time);
@@ -220,6 +221,7 @@ export default function Animation() {
 									};
 								}
 								handleAnimationComplete();
+								setCrrSprite(crrMovement.final_anm.url)
 							}}
 						/>
 						<Ground />
