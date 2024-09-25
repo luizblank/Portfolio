@@ -9,13 +9,12 @@ import styles from './styles.module.scss';
 import { useGlobalContext } from '../../context/GlobalContext';
 
 export default function Animation() {
-	const [jumpThrough, setjumpThrough] = useState(0);
+	const [jumpThrough, setjumpThrough] = useState(30);
 
 	const {
-        background2Status,
         setBackground2Status,
-        background3Status,
-        setBackground3Status
+        setBackground3Status,
+		setLeavingConveyor
     } = useGlobalContext();
 
 	const [tutorial, setTutorial] = useState(sessionStorage.getItem('tutorial') ? false : true);
@@ -166,14 +165,26 @@ export default function Animation() {
 									let transition = crrMovement.id > jumpThrough ? crrMovement.page_transition * 1000 + wait_time : 0;
 									if (crrMovement.action == "setBackground2Status") {
 										setTimeout(() => setBackground2Status(true), wait_time);
-										setTimeout(() => {
-											handleAnimationComplete();
-											return;
-										}, wait_time * 2);
+										if (!crrMovement.text) {
+											setTimeout(() => {
+												handleAnimationComplete();
+												return;
+											}, wait_time * 2);
+										}
 									}
 									if (crrMovement.action == "setBackground3Status") {
 										setTimeout(() => setBackground3Status(true), wait_time);
+										if (!crrMovement.text) {
+											setTimeout(() => {
+												handleAnimationComplete();
+												return;
+											}, wait_time);
+										}
+									}
+									if (crrMovement.action == "leavingConveyor") {
+										setTimeout(() => setLeavingConveyor(true), wait_time);
 										setTimeout(() => {
+											setShowDialog(false);
 											handleAnimationComplete();
 											return;
 										}, wait_time * 2);
@@ -186,7 +197,6 @@ export default function Animation() {
 										setTimeout(() => prevSlide(), wait_time);
 										setTimeout(() => handleAnimationComplete(), transition);
 									}
-									return;
 								}
 								if (crrMovement.text && crrMovement.id > jumpThrough) {
 									setCrrSprite(crrMovement.final_anm.url);

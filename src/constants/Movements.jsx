@@ -32,6 +32,8 @@ export var movements = [
     { id: 28, x: 0.7, y: 0, start_anm: character.talking_pointing_cf, final_anm: character.talking_pointing_cf, duration: 0, delay: 0, scaleX: 1, text: "i have no idea what this is" },
     { id: 29, x: 0.7, y: 0, start_anm: character.looking, final_anm: character.looking, duration: 0, delay: 0, scaleX: 1, text: "..." },
     { id: 30, x: 0.47, y: 0, start_anm: character.walking, final_anm: character.static, duration: 5, delay: 0, scaleX: -1 },
-    { id: 31, x: 0.47, y: 0, start_anm: character.talking, final_anm: character.talking, duration: 0, delay: 0, scaleX: 1, text: "i was just kidding, this is luizblank's final project..." },
+    { id: 31, x: 0.47, y: 0, start_anm: character.talking, final_anm: character.talking, duration: 0, delay: 0, scaleX: 1, text: "i was just kidding, this is luizblank's final project at senai..." },
     { id: 32, x: 0.47, y: 0, start_anm: character.presenting, final_anm: character.presenting, duration: 0, delay: 0, scaleX: 1, text: "Sorting Conveyor", action: "setBackground3Status", action_time: 0 },
+    { id: 33, x: 0.47, y: 0, start_anm: character.static, final_anm: character.looking_talking, duration: 0, delay: 2, scaleX: 1, text: "you can leave now conveyor", action: "leavingConveyor", action_time: 2000 },
+    { id: 34, x: 0.47, y: 0, start_anm: character.static, final_anm: character.static, duration: 0, delay: 0, scaleX: 1 },
 ]

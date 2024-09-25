@@ -1,17 +1,19 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import styles from './styles.module.scss';
 import { useGlobalContext } from '../../../context/GlobalContext';
 
-
 export default function BackgroundThird() {
-    const { background3Status, setBackground3Status } = useGlobalContext();
+    const { background3Status, leavingConveyor } = useGlobalContext();
     const videoRef = useRef(null);
 
     useEffect(() => {
         if (videoRef.current) {
             if (background3Status) {
                 document.getElementById('presentation').classList.add(styles.falldownAnimation);
-                document.getElementById('esteira').classList.add(styles.outofwayAnimation);
+                if (leavingConveyor) {
+                    document.getElementById('conveyor').classList.add(styles.movingAnimation);
+                    document.getElementById('conveyor_container').classList.add(styles.outofwayAmimation);
+                }
                 setTimeout(() => {
                     videoRef.current.play().catch(error => {
                         console.error('Autoplay failed:', error);
@@ -19,7 +21,7 @@ export default function BackgroundThird() {
                 }, 200);
             }
         }
-    }, [background3Status]);
+    }, [background3Status, leavingConveyor]);
 
     return (
         <>
@@ -31,8 +33,8 @@ export default function BackgroundThird() {
                         Your browser does not support the video tag.
                     </video>
                 </div>
-                <div className={styles.conveyor_container}>
-                    <img className={styles.conveyor} src='/esteira.png' alt='esteira_lego' id='esteira'/>
+                <div className={styles.conveyor_container} id='conveyor_container'>
+                    <img className={styles.conveyor} src='/esteira.png' alt='lego_conveyor' id='conveyor'/>
                 </div>
             </div>
         </>

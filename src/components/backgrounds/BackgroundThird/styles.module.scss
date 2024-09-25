@@ -33,17 +33,16 @@
 
 .conveyor_container {
     position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: end;
     width: 100%;
     height: 100%;
 
     .conveyor {
-        position: absolute;
-        left: 50%;
-        bottom: 8px;
-        transform: translateX(-50%) rotate(1deg);
+        transform: rotate(1deg);
         width: auto;
         height: 500px;
-        animation-delay: 2s;
     }
 }
 
@@ -51,8 +50,12 @@
     animation: falldown 2s ease-out forwards;
 }
 
-.outofwayAnimation {
-    animation: outofway 8s linear forwards;
+.movingAnimation {
+    animation: moving 0.5s ease-in-out infinite;
+}
+
+.outofwayAmimation {
+    animation: outofway 10s ease-in-out forwards;
 }
 
 @keyframes falldown {
@@ -65,14 +68,24 @@
     }
 }
 
-@keyframes outofway {
+@keyframes moving {
     0% {
-        transform: translateX(-50%) rotate(1deg);
+        transform: translateY(0) rotate(1deg);
     }
-    99.9% {
-        transform: translateX(-150vw) rotate(1deg);
+    50% {
+        transform: translateY(-5px) rotate(1deg);
     }
     100% {
-        transform: translateY(-100vh) rotate(1deg);
+        transform: translateY(0) rotate(1deg);
+    }
+}
+
+@keyframes outofway {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-100vw);
     }
 }

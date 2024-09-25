@@ -5,12 +5,15 @@ const GlobalContext = createContext();
 export const GlobalProvider = ({ children }) => {
     const [background2Status, setBackground2Status] = useState(false);
     const [background3Status, setBackground3Status] = useState(false);
+    const [leavingConveyor, setLeavingConveyor] = useState(false);
 
     const contextValue = {
         background2Status,
         setBackground2Status,
         background3Status,
-        setBackground3Status
+        setBackground3Status,
+        leavingConveyor,
+        setLeavingConveyor
     };
 
     return (

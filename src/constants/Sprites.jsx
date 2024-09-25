@@ -8,6 +8,7 @@ export const character = {
     talking_pointing_cf: { name: "talking_pointing_cl", url: "/talking_pointing_cl.gif" },
     changing: { name: "changing", url: "/changing.gif" },
     looking: { name: "looking", url: "/looking.gif" },
+    looking_talking: { name: "looking_talking", url: "/looking_talking.gif" },
 };
 
 export const lamp = "/lamp.png";
