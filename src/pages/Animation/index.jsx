@@ -9,9 +9,14 @@ import styles from './styles.module.scss';
 import { useGlobalContext } from '../../context/GlobalContext';
 
 export default function Animation() {
-	const [jumpThrough, setjumpThrough] = useState(25);
+	const [jumpThrough, setjumpThrough] = useState(0);
 
-	const { background2Status, setBackground2Status } = useGlobalContext();
+	const {
+        background2Status,
+        setBackground2Status,
+        background3Status,
+        setBackground3Status
+    } = useGlobalContext();
 
 	const [tutorial, setTutorial] = useState(sessionStorage.getItem('tutorial') ? false : true);
 	const [clicked, setClicked] = useState(false);
@@ -105,13 +110,8 @@ export default function Animation() {
 							className={styles.inner_carousel}
 							animate={{ x: `-${currentIndex * 100}%` }}
 							transition={{ 
-								duration: crrMovement.page_transition ?
-								crrMovement.id > jumpThrough ? crrMovement.page_transition : 0 : 1,
+								duration: crrMovement.id > jumpThrough ? crrMovement.page_transition : 0,
 								ease: 'easeInOut' }}
-							onAnimationComplete={
-								() => crrMovement.action == "wNextSlide" || crrMovement.action == "wPrevSlide" ?
-								0 : handleAnimationComplete()
-							}
 						>
 							{backgrounds.map((background, index) => (
 								<motion.div key={index} className={styles.item}>
@@ -148,37 +148,44 @@ export default function Animation() {
 							transition={{ type: 'tween', duration: crrMovement.id > jumpThrough ? crrMovement.duration : 0, delay: crrMovement.delay }}
 							onAnimationStart={() => {
 								if (crrMovement.action) {
-									let delay = crrMovement.id > jumpThrough ? crrMovement.action_delay : 0;
+									let transition = crrMovement.id > jumpThrough ? crrMovement.page_transition * 1000 : 0;
 									if (crrMovement.action == "wNextSlide") {
-										setTimeout(() => nextSlide(), crrMovement.delay);
-										handleAnimationComplete();
+										nextSlide();
+										setTimeout(() => handleAnimationComplete(), transition);
 									}
 									if (crrMovement.action == "wPrevSlide") {
-										setTimeout(() => prevSlide(), crrMovement.delay);
-										handleAnimationComplete();
+										prevSlide();
+										setTimeout(() => handleAnimationComplete(), transition);
 									}
-									return;
 								}
 							}}
 							onAnimationComplete={() => {
 								if (crrMovement.action) {
 									setCrrSprite(crrMovement.final_anm.url);
-									let duration = crrMovement.id > jumpThrough ? crrMovement.action_time : 0;
+									let wait_time = crrMovement.id > jumpThrough ? crrMovement.action_time : 0;
+									let transition = crrMovement.id > jumpThrough ? crrMovement.page_transition * 1000 + wait_time : 0;
 									if (crrMovement.action == "setBackground2Status") {
-										setTimeout(() => setBackground2Status(true), duration);
+										setTimeout(() => setBackground2Status(true), wait_time);
 										setTimeout(() => {
 											handleAnimationComplete();
 											return;
-										}, duration * 2);
+										}, wait_time * 2);
 									}
-									setTimeout(() => {
-										if (crrMovement.action == "nextSlide") {
-											nextSlide();
-										}
-										if (crrMovement.action == "prevSlide") {
-											prevSlide();
-										}
-									}, duration);
+									if (crrMovement.action == "setBackground3Status") {
+										setTimeout(() => setBackground3Status(true), wait_time);
+										setTimeout(() => {
+											handleAnimationComplete();
+											return;
+										}, wait_time * 2);
+									}
+									if (crrMovement.action == "nextSlide") {
+										setTimeout(() => nextSlide(), wait_time);
+										setTimeout(() => handleAnimationComplete(), transition);
+									}
+									if (crrMovement.action == "prevSlide") {
+										setTimeout(() => prevSlide(), wait_time);
+										setTimeout(() => handleAnimationComplete(), transition);
+									}
 									return;
 								}
 								if (crrMovement.text && crrMovement.id > jumpThrough) {
@@ -203,7 +210,6 @@ export default function Animation() {
 									};
 								}
 								handleAnimationComplete();
-								setCrrSprite(crrMovement.final_anm.url);
 							}}
 						/>
 						<Ground />

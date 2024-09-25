@@ -5,8 +5,9 @@ export const character = {
     pressing_button: { name: "pressing_button", url: "/pressing_button.gif" },
     talking: { name: "talking", url: "/talking.gif" },
     talking_pointing_br: { name: "talking_pointing_br", url: "/talking_pointing_br.gif" },
+    talking_pointing_cf: { name: "talking_pointing_cl", url: "/talking_pointing_cl.gif" },
     changing: { name: "changing", url: "/changing.gif" },
-    pointing: { name: "pointing", url: "/pointing.png" },
+    looking: { name: "looking", url: "/looking.gif" },
 };
 
 export const lamp = "/lamp.png";
