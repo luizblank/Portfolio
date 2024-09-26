@@ -5,7 +5,7 @@ import { useRef, useEffect, useState } from 'react';
 import styles from './styles.module.scss';
 
 export default function BackgroundFourth() {
-    const { marcosAnimation } = useGlobalContext();
+    const { marcosAnimation, showWinners } = useGlobalContext();
     const [ marcosSprite, setMarcosSprite ] = useState(marcos.static);
     const videoRef = useRef(null);
 
@@ -44,15 +44,24 @@ export default function BackgroundFourth() {
         }
     }, [marcosAnimation]);
 
+    useEffect(() => {
+        if (showWinners) {
+            console.log("3231232")
+            document.getElementById('video').classList.add(styles.videoLeavingAnimation);
+            document.getElementById('image').classList.add(styles.imageShowingAnimation);
+        }
+    }, [showWinners])
+
     return(
         <>
             <div className={styles.page}>
                 <div className={styles.presentation} id='presentation'>
                     <h1>Marcos X Machine</h1>
-                    <video ref={videoRef} muted> {/* add loop after */}
+                    <video ref={videoRef} muted loop id='video'>
                         <source src='/marcosxmachine_video.mp4' type='video/mp4'/>
                         Your browser does not support the video tag.
                     </video>
+                    <img src='/winners.jpg' alt='winners' id='image'/>
                 </div>
                 <div className={styles.marcos_container} id='marcos_container'>
                     <Marcos className={styles.marcos} src={marcosSprite.url} id='marcos' alt={'marcos ' + marcosSprite.name}/>

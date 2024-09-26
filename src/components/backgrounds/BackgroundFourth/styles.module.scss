@@ -30,6 +30,15 @@
         border-radius: 20px;
         border: 8px solid black;
     }
+
+    img {
+        position: absolute;
+        transform: translateY(-100vh);
+        width: auto;;
+        height: 60vh;
+        border-radius: 20px;
+        border: 8px solid black;
+    }
 }
 
 .marcos_container {
@@ -63,6 +72,15 @@
 
 .suckedInAnimation {
     animation: suckedIn 5s ease-in-out forwards;
+}
+
+.videoLeavingAnimation {
+    animation: videoLeaving 2s forwards;
+}
+
+.imageShowingAnimation {
+    animation: showingAnimation 2s forwards;
+    animation-delay: 2s;
 }
 
 @keyframes wiggle {
@@ -139,5 +157,23 @@
     100% {
         transform: translate(48%, -38vh);
         opacity: 0;
+    }
+}
+
+@keyframes videoLeaving {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-100vh);
+    }
+}
+
+@keyframes imageShowing {
+    0% {
+        transform: translateY(-100vh);
+    }
+    100% {
+        transform: translateY(10%);
     }
 }

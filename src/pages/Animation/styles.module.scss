@@ -44,6 +44,39 @@
     }
 }
 
+.skip {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    font-family: "Josefin Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-size: 18px;
+    font-weight: 600;
+    margin: 20px;
+    background-color: transparent;
+    border: 0;
+    outline: 0;
+    z-index: +1;
+
+    .skip_text {
+        margin-right: 18px;
+    }
+
+    .icon {
+        position: absolute;
+        right: 0;
+    }
+
+    &:hover {
+        cursor: pointer;
+
+        .icon {
+            animation: leftright 1s ease-in-out infinite;
+        }
+    }
+}
+
 .container {
     background-size: cover;
     position: relative;
@@ -81,4 +114,18 @@
     justify-content: center;
     flex-direction: column;
     bottom: 0;
+}
+
+@keyframes leftright {
+    0% {
+        transform: translateX(0);
+    }
+
+    50% {
+        transform: translateX(5px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
 }

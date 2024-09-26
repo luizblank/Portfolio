@@ -7,6 +7,7 @@ export const GlobalProvider = ({ children }) => {
     const [background3Status, setBackground3Status] = useState(false);
     const [leavingConveyor, setLeavingConveyor] = useState(false);
     const [marcosAnimation, setMarcosAnimation] = useState(false);
+    const [showWinners, setShowWinners] = useState(false);
 
     const contextValue = {
         background2Status,
@@ -16,7 +17,9 @@ export const GlobalProvider = ({ children }) => {
         leavingConveyor,
         setLeavingConveyor,
         marcosAnimation,
-        setMarcosAnimation
+        setMarcosAnimation,
+        showWinners,
+        setShowWinners
     };
 
     return (

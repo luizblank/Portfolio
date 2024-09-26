@@ -4,6 +4,7 @@ export const character = {
     presenting: { name: "presenting", url: "/presenting.gif" },
     pressing_button: { name: "pressing button", url: "/pressing_button.gif" },
     talking: { name: "talking", url: "/talking.gif" },
+    talking_flat: { name: "talking flat", url: "/talking_flat.gif" },
     talking_pointing_br: { name: "talking pointing", url: "/talking_pointing_br.gif" },
     talking_pointing_cf: { name: "talking pointing", url: "/talking_pointing_cl.gif" },
     changing: { name: "changing", url: "/changing.gif" },
