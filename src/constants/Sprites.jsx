@@ -2,14 +2,21 @@ export const character = {
     static: { name: "static", url: "/static.gif"},
     walking: { name: "walking", url: "/walking.gif" },
     presenting: { name: "presenting", url: "/presenting.gif" },
-    pressing_button: { name: "pressing_button", url: "/pressing_button.gif" },
+    pressing_button: { name: "pressing button", url: "/pressing_button.gif" },
     talking: { name: "talking", url: "/talking.gif" },
-    talking_pointing_br: { name: "talking_pointing_br", url: "/talking_pointing_br.gif" },
-    talking_pointing_cf: { name: "talking_pointing_cl", url: "/talking_pointing_cl.gif" },
+    talking_pointing_br: { name: "talking pointing", url: "/talking_pointing_br.gif" },
+    talking_pointing_cf: { name: "talking pointing", url: "/talking_pointing_cl.gif" },
     changing: { name: "changing", url: "/changing.gif" },
-    looking: { name: "looking", url: "/looking.gif" },
-    looking_talking: { name: "looking_talking", url: "/looking_talking.gif" },
+    looking: { name: "looking", url: "/looking.png" },
+    looking_talking: { name: "looking talking", url: "/looking_talking.gif" },
+    looking_shocked: { name: "looking shocked", url: "/looking_shocked.png" },
+    looking_up: { name: "looking up", url: "/looking_up.png" },
 };
+
+export const marcos = {
+    static: { name: "static", url: "/marcos.png" },
+    pushing: { name: "pushing", url: "/marcos_pushing.png" }
+}
 
 export const lamp = "/lamp.png";
 export const palm = "/palm_tree.png";

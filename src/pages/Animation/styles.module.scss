@@ -78,11 +78,7 @@
     width: 100%;
     height: auto;
     display: flex;
+    justify-content: center;
     flex-direction: column;
     bottom: 0;
-}
-
-.dialog_text {
-    text-align: center;
-    padding: 24px 24px 40px 24px;
 }

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { movements } from '../../constants/Movements';
 import { sprites_sizes } from '../../constants/SpritesSizes';
-import { Character, Dialog, Ground } from '../../constants/Styles';
+import { Character, Dialog, DialogText, Ground } from '../../constants/Styles';
 import { backgrounds } from '../../constants/Backgrounds';
 import { motion } from 'framer-motion';
 import { character } from '../../constants/Sprites';
@@ -14,7 +14,8 @@ export default function Animation() {
 	const {
         setBackground2Status,
         setBackground3Status,
-		setLeavingConveyor
+		setLeavingConveyor,
+		setMarcosAnimation
     } = useGlobalContext();
 
 	const [tutorial, setTutorial] = useState(sessionStorage.getItem('tutorial') ? false : true);
@@ -32,7 +33,7 @@ export default function Animation() {
 	});
 
 	const [crrMovement, setCrrMovement] = useState(movements[firstMovement]);
-	const [crrSprite, setCrrSprite] = useState(crrMovement.start_anm.url);
+	const [crrSprite, setCrrSprite] = useState(crrMovement.start_anm);
 
 	const [showDialog, setShowDialog] = useState(crrMovement.text ? true : false);
 
@@ -59,7 +60,7 @@ export default function Animation() {
 	}, [dialogText])
 
 	useEffect(() => {
-		setCrrSprite(crrMovement.start_anm.url);
+		setCrrSprite(crrMovement.start_anm);
 	}, [crrMovement]);
 
 	function handleAnimationComplete() {
@@ -92,9 +93,9 @@ export default function Animation() {
 							setClicked(true);
 							sessionStorage.setItem('tutorial', true);
 						}}>
-							<div className={styles.dialog_text}>
-								{dialogTextDisplay}
-							</div>
+							<DialogText className={styles.dialog_text}>
+								<div>{dialogTextDisplay}</div>
+							</DialogText>
 						</Dialog>
 						<img src={character.talking.url} alt='character talking' />
 						<button type='button' onClick={() => { setTutorial(false) }} disabled={!clicked}>start the tour</button>
@@ -122,22 +123,22 @@ export default function Animation() {
 
 					<motion.div className={styles.animation_container}>
 						<Dialog
-							onClick={ () => handleDialogClick() }
+							onClick={ () => !crrMovement.cutscene_text ? handleDialogClick() : 0 }
 							style={{ display: showDialog ? 'flex' : 'none' }}
 							animate={{
-								x: (windowDimensions.width * crrMovement.x) - ((sprites_sizes.dialog.int_width - sprites_sizes.character.int_width) / 2),
+								x: (windowDimensions.width * crrMovement.x) - ((sprites_sizes.dialog.width - sprites_sizes.character.width) / 2),
 								y: windowDimensions.height * crrMovement.y
 							}}
 							transition={{ type: 'tween', duration: crrMovement.duration, delay: crrMovement.delay }}
 						>
-							<div className={styles.dialog_text}>
-								{dialogTextDisplay}
-							</div>
+							<DialogText>
+								<div>{dialogTextDisplay}</div>
+							</DialogText>
 						</Dialog>
 						<Character
 							key={crrMovement.id}
-							alt='sprite'
-							src={crrSprite}
+							alt={"character " + crrSprite.name}
+							src={crrSprite.url}
 							style={{ scaleX: crrMovement.scaleX }}
 							initial={{ x: windowDimensions.width * movements[crrMovement.id == 0 ? 0 : crrMovement.id - 1].x }}
 							animate={{
@@ -160,7 +161,7 @@ export default function Animation() {
 							}}
 							onAnimationComplete={() => {
 								if (crrMovement.action) {
-									setCrrSprite(crrMovement.final_anm.url);
+									setCrrSprite(crrMovement.final_anm);
 									let wait_time = crrMovement.id > jumpThrough ? crrMovement.action_time : 0;
 									let transition = crrMovement.id > jumpThrough ? crrMovement.page_transition * 1000 + wait_time : 0;
 									if (crrMovement.action == "setBackground2Status") {
@@ -182,25 +183,25 @@ export default function Animation() {
 											}, wait_time);
 										}
 									}
-									if (crrMovement.action == "leavingConveyor") {
+									if (crrMovement.action == "setLeavingConveyorStatus") {
 										setTimeout(() => setLeavingConveyor(true), wait_time);
-										setTimeout(() => {
-											setShowDialog(false);
-											handleAnimationComplete();
-											return;
-										}, wait_time * 1.2);
+									}
+									if (crrMovement.action == "setMarcosAnimationStatus") {
+										setTimeout(() => setMarcosAnimation(true), wait_time);
 									}
 									if (crrMovement.action == "nextSlide") {
 										setTimeout(() => nextSlide(), wait_time);
 										setTimeout(() => handleAnimationComplete(), transition);
+										return;
 									}
 									if (crrMovement.action == "prevSlide") {
 										setTimeout(() => prevSlide(), wait_time);
 										setTimeout(() => handleAnimationComplete(), transition);
+										return;
 									}
 								}
 								if (crrMovement.text && crrMovement.id > jumpThrough) {
-									setCrrSprite(crrMovement.final_anm.url);
+									setCrrSprite(crrMovement.final_anm);
 									setShowDialog(true);
 									let speed = 60;
 									let i = 0;
@@ -216,12 +217,19 @@ export default function Animation() {
 									}
 
 									typeWriter();
-									return () => {
-										clearTimeout(typeWriter);
-									};
+
+									if (crrMovement.cutscene_text) {
+										setTimeout(() => {
+											setShowDialog(false);
+											handleAnimationComplete();
+											clearTimeout(typeWriter);
+											return;
+										}, crrMovement.id > jumpThrough ? crrMovement.cutscene_text_time : 0);
+									}
+									return () => clearTimeout(typeWriter);
 								}
 								handleAnimationComplete();
-								setCrrSprite(crrMovement.final_anm.url)
+								setCrrSprite(crrMovement.final_anm)
 							}}
 						/>
 						<Ground />

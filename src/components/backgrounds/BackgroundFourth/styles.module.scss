@@ -1,0 +1,143 @@
+.page {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+}
+
+.presentation {
+    width: 100%;
+    height: 100%;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -60%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    h1 {
+        font-family: "Silkscreen", sans-serif;
+        font-weight: 500;
+        font-size: 3em;
+        text-align: center;
+    }
+
+    video {
+        width: auto;
+        height: 60vh;
+        border-radius: 20px;
+        border: 8px solid black;
+    }
+}
+
+.marcos_container {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    width: 100%;
+    height: 100%;
+}
+
+.wiggleAnimation {
+    animation: wiggle 0.8s ease-in-out infinite;
+}
+
+.sneakInAnimation {
+    animation: sneakIn 1s ease-in-out forwards;
+}
+
+.returnAnimation {
+    animation: return 1s ease-in-out forwards;
+}
+
+.runningAnimation {
+    animation: run 8s ease-in-out forwards;
+}
+
+.pullingAnimation {
+    animation: pulling 5s ease-in-out forwards;
+}
+
+.suckedInAnimation {
+    animation: suckedIn 5s ease-in-out forwards;
+}
+
+@keyframes wiggle {
+    0% {
+        transform: rotate(5deg) scaleX(-1);
+    }
+
+    25% {
+        transform: rotate(-5deg) scaleX(-1);
+    }
+
+    50% {
+        transform: rotate(5deg) scaleX(-1);
+    }
+
+    75% {
+        transform: rotate(-5deg) scaleX(-1);
+    }
+
+    100% {
+        transform: rotate(5deg) scaleX(-1);
+    }
+}
+
+@keyframes sneakIn {
+    0% {
+        transform: translateX(0) rotate(0);
+    }
+
+    100% {
+        transform: translateX(-50%) rotate(-10deg);
+    }
+}
+
+@keyframes return {
+    0% {
+        transform: translateX(-50%) rotate(-10deg);
+    }
+
+    100% {
+        transform: translateX(0) rotate(0);
+    }
+}
+
+@keyframes run {
+    0% {
+        transform: translate(0);
+    }
+
+    100% {
+        transform: translateX(80%);
+    }
+}
+
+@keyframes pulling {
+    0% {
+        transform: translate(80%, 0);
+    }
+
+    100% {
+        transform: translate(75%, -5%);
+    }
+}
+
+@keyframes suckedIn {
+    0% {
+        transform: translate(75%, -5%);
+        opacity: 1;
+    }
+    90% {
+        transform: translate(60%, -20%);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(48%, -38vh);
+        opacity: 0;
+    }
+}

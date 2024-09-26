@@ -19,7 +19,7 @@
     h1 {
         font-family: "Silkscreen", sans-serif;
         font-weight: 500;
-        font-size: 40px;
+        font-size: 3em;
         text-align: center;
     }
 
@@ -72,9 +72,11 @@
     0% {
         transform: translateY(0) rotate(1deg);
     }
+
     50% {
         transform: translateY(-5px) rotate(1deg);
     }
+
     100% {
         transform: translateY(0) rotate(1deg);
     }

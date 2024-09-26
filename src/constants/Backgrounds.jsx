@@ -1,5 +1,5 @@
 import BackgroundFirst from "../components/backgrounds/BackgroundFirst";
-import BackgroundFourth from "../components/backgrounds/BackgroundForth";
+import BackgroundFourth from "../components/backgrounds/BackgroundFourth";
 import BackgroundSecond from "../components/backgrounds/BackgroundSecond";
 import BackgroundThird from "../components/backgrounds/BackgroundThird";
 
