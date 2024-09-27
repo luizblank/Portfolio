@@ -12,7 +12,7 @@ import { FaGithub } from 'react-icons/fa';
 import styles from './styles.module.scss';
 
 export default function Animation() {
-	const [jumpThrough, setjumpThrough] = useState(52);
+	const [jumpThrough, setjumpThrough] = useState(0);
 
 	const {
 		setBackground2Status,
