@@ -79,8 +79,7 @@
 }
 
 .imageShowingAnimation {
-    animation: showingAnimation 2s forwards;
-    animation-delay: 2s;
+    animation: imageShowing 2s forwards;
 }
 
 @keyframes wiggle {

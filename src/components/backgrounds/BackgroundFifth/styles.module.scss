@@ -1,0 +1,99 @@
+.page {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+}
+
+.presentation {
+    width: 100%;
+    height: 100%;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -60%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    h1 {
+        font-family: "Silkscreen", sans-serif;
+        font-weight: 500;
+        font-size: 3em;
+        text-align: center;
+    }
+}
+
+.github_link {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: black;
+    text-decoration: none;
+    margin: 8px 0;
+
+    .icon {
+        font-size: 2em;
+        text-align: center;
+        margin-right: 8px;
+    }
+
+    .title {
+        font-family: "Silkscreen", sans-serif;
+        font-weight: 500;
+        font-size: 1.5em;
+        text-align: center;
+    }
+
+    &:hover {
+        .icon {
+            animation: spin 2s linear infinite;
+        }
+        
+        .title {
+            animation: updown 1s linear infinite;
+        }
+    }
+}
+
+.warning {
+    width: 40%;
+    font-family: "Silkscreen", sans-serif;
+    font-weight: 500;
+    font-size: 1em;
+    color: rgb(112, 112, 112);
+    text-align: center;
+    margin-top: 32px;
+}
+
+@keyframes spin {
+    0% {
+        transform-origin: center;
+        transform: rotate(0);
+    }
+    100% {
+        transform-origin: center;
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes updown {
+    0% {
+        transform: translateY(0);
+    }
+    25% {
+        transform: translateY(-1px);
+    }
+    50% {
+        transform: translateY(0);
+    }
+    75% {
+        transform: translateY(1px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}

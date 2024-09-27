@@ -46,9 +46,8 @@ export default function BackgroundFourth() {
 
     useEffect(() => {
         if (showWinners) {
-            console.log("3231232")
-            document.getElementById('video').classList.add(styles.videoLeavingAnimation);
-            document.getElementById('image').classList.add(styles.imageShowingAnimation);
+            document.getElementById('marcosxmachine_video').classList.add(styles.videoLeavingAnimation);
+            document.getElementById('winners_image').classList.add(styles.imageShowingAnimation);
         }
     }, [showWinners])
 
@@ -57,11 +56,11 @@ export default function BackgroundFourth() {
             <div className={styles.page}>
                 <div className={styles.presentation} id='presentation'>
                     <h1>Marcos X Machine</h1>
-                    <video ref={videoRef} muted loop id='video'>
+                    <video ref={videoRef} muted loop id='marcosxmachine_video'>
                         <source src='/marcosxmachine_video.mp4' type='video/mp4'/>
                         Your browser does not support the video tag.
                     </video>
-                    <img src='/winners.jpg' alt='winners' id='image'/>
+                    <img src='/winners.jpg' alt='winners' id='winners_image'/>
                 </div>
                 <div className={styles.marcos_container} id='marcos_container'>
                     <Marcos className={styles.marcos} src={marcosSprite.url} id='marcos' alt={'marcos ' + marcosSprite.name}/>
