@@ -59,6 +59,28 @@
     }
 }
 
+.container3 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 90vw;
+    padding: 20px;
+
+    h1 {
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        text-align: center;
+        font-size: 35px;
+        margin: 0 0 15px 0;
+        outline: white solid 2px;
+        font-family: "Josefin Sans", sans-serif;
+        font-optical-sizing: auto;
+        font-style: normal;
+    }
+}
+
 .ab {
     transform: translateX(-140px);
     animation: push 0.1s ease-in-out forwards;
@@ -96,6 +118,7 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 .cube {
