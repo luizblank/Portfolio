@@ -1,8 +1,7 @@
-# React + Vite
+# LuizBlank's Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+You can access this portfolio on vercel <a href="luizblank-portfolio.vercel.app">here</a>.
+If you prefer to clone this repository and access it locally, to boot:
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+"npm install" - to install the dependencies
+"npm run dev" - to start running on localhost.
