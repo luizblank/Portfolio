@@ -13,7 +13,7 @@
         display: flex;
         flex-direction: row;
         text-align: center;
-        font-size: 35px;
+        font-size: 36px;
         margin: 0 0 10px 0;
     }
 }
@@ -22,29 +22,20 @@
     display: flex;
     flex-direction: row;
     font-family: "Josefin Sans", sans-serif;
-    font-style: normal;
 }
 
 .gochi {
     font-family: "Gochi Hand", cursive;
     font-weight: 400;
-    font-style: normal;
     letter-spacing: 2px;
-}
-
-.description {
-    font-family: "Poppins", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-    text-align: center;
-    font-size: 18px;
-    font-weight: 500;
 }
 
 .text_arrow {
     display: flex;
+    flex-direction: row;
+    justify-content: center;
     align-items: center;
-    text-align: center;
+
     margin-top: 20px;
 }
 
@@ -60,10 +51,8 @@
     padding: 10px;
     text-align: left;
     font-family: "Josefin Sans", sans-serif;
-    font-optical-sizing: auto;
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 600;
-    font-style: normal;
 
     a {
         text-decoration: none;

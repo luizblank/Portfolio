@@ -1,19 +1,22 @@
 .container {
     position: absolute;
     transform: translate(-50%, -50%);
+    left: 50%;
+    top: 50%;
+
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    left: 50%;
-    top: 50%;
 
     h1 {
         position: relative;
         display: flex;
         flex-direction: row;
         text-align: center;
-        font-size: 35px;
+
+        font-family: "Josefin Sans", sans-serif;
+        font-size: 36px;
         margin: 0 0 15px 0;
         outline: white solid 2px;
     }
@@ -23,8 +26,10 @@
     color: white;
     background-color: black;
     outline: white solid 2px;
+
     width: 150px;
     height: auto;
+
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -43,18 +48,21 @@
 }
 
 .front {
+    z-index: +1;
     position: absolute;
     right: 0;
+
     width: 150px;
     height: auto;
     color: black;
     text-align: start;
     background-color: white;
+
     animation-name: falling;
     animation-delay: 1s;
     animation-duration: 2s;
     animation-fill-mode: forwards;
-    z-index: +1;
+    
 }
 
 @keyframes spin {

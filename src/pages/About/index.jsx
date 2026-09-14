@@ -1,129 +1,145 @@
+/* eslint-disable react/no-unescaped-entities */
 import styles from './styles.module.scss';
 import { useEffect, useState } from 'react';
+import { FaChevronUp, FaChevronDown } from "react-icons/fa";
 
 export default function About() {
-    const [topics, setTopics] = useState(false);
+    const topics = ['about', 'stack', 'experiences', 'education']
+    const [currTopic, setCurrTopic] = useState(0)
 
-    const showTopics = () => {
-        setTopics(true);
-    }
-
-    const [windowDimensions, setWindowDimensions] = useState({
+    const [windowDimensions] = useState({
         width: window.innerWidth,
         height: window.innerHeight,
     });
 
     return (
         <>
-            {
-                windowDimensions.width > windowDimensions.height && (windowDimensions.width >= 1280 || !windowDimensions.height >= 800) ?
-                    <div className={styles.container2} id={styles.absolute_center}>
-                        <div style={{ display: topics ? 'flex' : 'none' }} className={styles.container} id={styles.left_topics}>
-                            <h1>
-                                working
-                            </h1>
-                            <div className={styles.container}>
-                                <div className={styles.topic}>
-                                    <h2>web programmer at&nbsp;<a href='https://www.bosch.com.br/' target='_blank'>bosch</a></h2>
-                                    <div className={styles.description}>
-                                        had my first experience with programming in the internal course that
-                                        was given within the company<br />
-                                        working period: jan/2022 to aug/2022
-                                    </div>
-                                </div>
-                                <div className={styles.topic}>
-                                    <h2>system developer at&nbsp;<a href='https://www.bosch.com.br/' target='_blank'>bosch</a></h2>
-                                    <div className={styles.description}>
-                                        joined bosch again to deepen my knowledge and learn new things, this
-                                        time i discovered react and it became my favorite tool to work with<br />
-                                        working period: fev/2023 to oct/2024
-                                    </div>
-                                </div>
-                            </div>
+            <a onClick={() => setCurrTopic(currTopic - 1)} className={`${styles.nav_button} ${styles.up_button}`} style={{display: currTopic == 0 ? 'none' : 'block'}} href={`#${topics[currTopic]}`}><FaChevronUp/></a>
+            <a onClick={() =>
+                setCurrTopic(
+                    currTopic < topics.length - 1 ?
+                    currTopic + 1 :
+                    0
+                )
+            } className={`${styles.nav_button} ${styles.down_button}`} href={`#${topics[currTopic]}`}><FaChevronDown/></a>
+
+            <div className={styles.wrapper} id='about' onMouseEnter={() => setCurrTopic(0)}>
+                <div className={styles.container}>
+                    <h1>
+                        <div className={styles.ab}>ab</div>
+                        <div className={styles.out}>out</div>
+                        <div className={styles.me}>me</div>
+                    </h1>
+                    <div className={styles.description}>
+                        <span>hi! welcome to my creation corner</span>
+                        <span>you can call me Luiz, but i go by</span>
+                        <span className={styles.cube}>
+                            <div className={`${styles.face} ${styles.front}`}>luizblank</div>
+                            <div className={`${styles.face} ${styles.up}`}>blank</div>
+                            <div className={`${styles.face} ${styles.back}`}>rosa</div>
+                            <div className={`${styles.face} ${styles.down}`}>knalb</div>
+                        </span>
+                        <span>too</span>
+                        <span style={{ marginTop: '20px' }}>i'm frontend/ios developer and 3d designer who loves building new products</span>
+                    </div>
+                </div>
+            </div>
+
+            <div className={styles.wrapper} id='stack' onMouseEnter={() => setCurrTopic(1)}>
+                <div className={styles.container}>
+                    <h1>tech stack</h1>
+                    <div className={styles.sections}>
+                        <div className={styles.stack_section}>
+                            <span className={styles.title}>frontend</span>
+                            <span className={styles.content}>react, vite, typescript, javascript, html, css, tailwind</span>
                         </div>
-                        <div className={styles.container}>
-                            <h1>
-                                <div className={styles.ab}>ab</div>
-                                <div className={styles.out}>out</div>
-                                <div className={styles.me}>me</div>
-                            </h1>
-                            <div className={styles.description}>
-                                <div>hey! welcome to my little creation corner 👻</div>
-                                <div className={styles.text}>
-                                    you can call me Luiz, but i go by
-                                    <div className={styles.cube}>
-                                        <div id={styles.front} className={styles.face}>luizblank</div>
-                                        <div id={styles.up} className={styles.face}>blank</div>
-                                        <div id={styles.back} className={styles.face}>rosa</div>
-                                        <div id={styles.down} className={styles.face}>knalb</div>
-                                    </div>
-                                    too
-                                </div>
-                                <div style={{ marginTop: '20px' }}>i'm frontend developer who loves playing with</div>
-                                <div className={styles.text}>
-                                    animations and&nbsp;
-                                    <div className={styles.different}>different&nbsp;</div>
-                                    <div className={styles.design}>design&nbsp;</div>
-                                    <div className={styles.styles}>styles</div>
-                                </div>
-                                <button type='button' className={styles.show_button} onClick={showTopics}>see my experiences here</button>
-                            </div>
+                        <div className={styles.stack_section}>
+                            <span className={styles.title}>mobile</span>
+                            <span className={styles.content}>swiftui, swift, realitykit, swiftdata, combine</span>
                         </div>
-                        <div style={{ display: topics ? 'flex' : 'none' }} className={styles.container} id={styles.right_topics}>
-                            <h1>
-                                learning
-                            </h1>
-                            <div className={styles.container}>
-                                <div className={styles.topic}>
-                                    <h2><a href='https://www.ccaa.com.br/' target='_blank'>ccaa</a>&nbsp;english course</h2>
-                                    <div className={styles.description}>
-                                        in 2021, i concluded my english course at ccaa progressing through 11 levels of study,
-                                        covering basic, intermediate and advanced education, with an average grade of 92,06
-                                    </div>
-                                </div>
-                                <div className={styles.topic}>
-                                    <h2><a href='https://www.senaipr.org.br/' target='_blank'>senai</a>&nbsp;technical courses</h2>
-                                    <div className={styles.description}>
-                                        along with my internal course at bosch, i took two technical courses provided by them at senai,
-                                        which were part of the internal course's schedule<br />
-                                        taken courses: system developement and web programming
-                                    </div>
-                                </div>
-                            </div>
+                        <div className={styles.stack_section}>
+                            <span className={styles.title}>backend</span>
+                            <span className={styles.content}>node.js, python, c#, mongodb, sqlserver, rest apis</span>
+                        </div>
+                        <div className={styles.stack_section}>
+                            <span className={styles.title}>tools</span>
+                            <span className={styles.content}>figma, blender, git, github</span>
                         </div>
                     </div>
+                </div>
+            </div>
 
-                    :
-
-                    <div className={styles.container3} id={styles.absolute_center}>
-                        <h1>
-                            <div className={styles.ab}>ab</div>
-                            <div className={styles.out}>out</div>
-                            <div className={styles.me}>me</div>
-                        </h1>
-                        <div className={styles.description}>
-                            <div>hey! welcome to my little creation corner 👻</div>
-                            <div className={styles.text}>
-                                you can call me Luiz, but i go by
-                                <div className={styles.cube}>
-                                    <div id={styles.front} className={styles.face}>luizblank</div>
-                                    <div id={styles.up} className={styles.face}>blank</div>
-                                    <div id={styles.back} className={styles.face}>rosa</div>
-                                    <div id={styles.down} className={styles.face}>knalb</div>
-                                </div>
-                                too
+            <div className={styles.wrapper} id='experiences' onMouseEnter={() => setCurrTopic(2)}>
+                <div className={styles.container}>
+                    <h1>experiences</h1>
+                    <div className={styles.sections}>
+                        <div className={styles.section}>
+                            <div className={styles.main}>
+                                <span className={styles.title}>ios developer & designer</span>
+                                <span className={styles.place}>apple developer academy (scholarship)</span>
                             </div>
-                            <div style={{ marginTop: '20px' }}>i'm frontend developer who loves playing with</div>
-                            <div className={styles.text}>
-                                animations and&nbsp;
-                                <div className={styles.different}>different&nbsp;</div>
-                                <div className={styles.design}>design&nbsp;</div>
-                                <div className={styles.styles}>styles</div>
-                            </div>
+                            <span className={styles.date}>mar 2025 - dec 2026</span>
                         </div>
-                        <a className={styles.show_button} href='https://www.linkedin.com/in/luiz-antonio-rosa-cardoso-9005512b7/' target='_blank'>see my experiences here</a>
+                        <div className={styles.section}>
+                            <div className={styles.main}>
+                                <span className={styles.title}>web designer</span>
+                                <span className={styles.place}>ibacbrasil - educational technologies</span>
+                            </div>
+                            <span className={styles.date}>jun 2025 - mar 2026</span>
+                        </div>
+                        <div className={styles.section}>
+                            <div className={styles.main}>
+                                <span className={styles.title}>systems developer</span>
+                                <span className={styles.place}>bosch (internship)</span>
+                            </div>
+                            <span className={styles.date}>feb 2023 - oct 2024</span>
+                        </div>
+                        <div className={styles.section}>
+                            <div className={styles.main}>
+                                <span className={styles.title}>web developer</span>
+                                <span className={styles.place}>bosch (internship)</span>
+                            </div>
+                            <span className={styles.date}>jan 2022 - aug 2022</span>
+                        </div>
                     </div>
-            }
+                </div>
+            </div>
+
+            <div className={styles.wrapper} id='education' onMouseEnter={() => setCurrTopic(3)}>
+                <div className={styles.container}>
+                    <h1>education</h1>
+                    <div className={styles.sections}>
+                        <div className={styles.section}>
+                            <div className={styles.main}>
+                                <span className={styles.title}>systems analysis and development</span>
+                                <span className={styles.place}>cruzeiro do sul university</span>
+                            </div>
+                            <span className={styles.date}>aug 2026 - jun 2028</span>
+                        </div>
+                        <div className={styles.section}>
+                            <div className={styles.main}>
+                                <span className={styles.title}>animation design</span>
+                                <span className={styles.place}>cruzeiro do sul university</span>
+                            </div>
+                            <span className={styles.date}>oct 2025 - dec 2026</span>
+                        </div>
+                        <div className={styles.section}>
+                            <div className={styles.main}>
+                                <span className={styles.title}>systems development</span>
+                                <span className={styles.place}>senai</span>
+                            </div>
+                            <span className={styles.date}>feb 2023 - oct 2024</span>
+                        </div>
+                        <div className={styles.section}>
+                            <div className={styles.main}>
+                                <span className={styles.title}>web development</span>
+                                <span className={styles.place}>senai</span>
+                            </div>
+                            <span className={styles.date}>jan 2022 - aug 2022</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </>
     )
 }
